@@ -6,7 +6,7 @@
       }
     ],
     "routes": [
-      { "src": "/Flask_HTML_app/(.*)", "dest": "Flask_HTML_app.py" },
+      { "src": "/(.*)", "dest": "Flask_HTML_app.py" },
       { "src": "/(.*)", "dest": "index.html" }
     ]
   }
