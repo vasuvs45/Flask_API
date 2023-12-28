@@ -1,30 +1,66 @@
 <!DOCTYPE html>
-<html >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>ML API</title>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
-  <div class = "login">
+  <div class="login">
     <h1>Predict Salary</h1>
 
-    <!--Main Input For Recieving Query to out ML-->
-    <form action="{{  url_for('predict') }}"method="post">
-        <input type="text" name="years_experience" placeholder="Years of Experience" required="required" />
-            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>    
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict') }}" method="post">
+      <!-- Add this HTML code for the dropdown menu -->
+      <input type="text" name="experience_level" placeholder="Experience Level" required="required" />
+      <select name="employment_type" required="required">
+        <option value="" disabled selected>Select Job Mode</option>
+        <option value="1">Full Time</option>
+        <option value="2">Part Time</option>
+        <option value="3">Contract</option>
+        <option value="4">Free Lance</option>
+      </select>
 
+      <!--input type="text" name="employment_type" placeholder="Employment Type" required="required" /-->
+      <select name="employee_residence" required="required">
+        <option value="" disabled selected>Select Employee location</option>
+        <option value="0">USA</option>
+        <option value="1">Non USA </option>
+      </select>
+
+      <select name="company_location" required="required">
+        <option value="" disabled selected>Select Job location</option>
+        <option value="0">USA</option>
+        <option value="1">Non USA </option>
+      </select>
+
+      <!--select name="company_size" required="required">
+        <option value="" disabled selected>Select Company Size</option>
+        <option value="1">Small Scale</option>
+        <option value="0">Medium Scale</option>
+        <option value="2">Large Scale</option>
+      </select-->
+
+      <select name="job_title" required="required">
+        <option value="" disabled selected>Select Job Title</option>
+        <option value="0">Data Scientist</option>
+        <option value="1">Data Engineer</option>
+        <option value="2">Data Analyst</option>
+        <option value="3">Machine Learning Engineer</option>
+        <option value="4">Software Developer</option>
+      </select>
+      
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
     <br>
     <br>
     {{ prediction_text }}
-  </div>
-
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
+
